@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predrag Jovanovic – Senior Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:       #4f46e5;
+      --accent-light: #e0e7ff;
+      --accent-dark:  #3730a3;
+      --dark:         #1e293b;
+      --medium:       #475569;
+      --light:        #94a3b8;
+      --sidebar-bg:   #f8fafc;
+      --border:       #e2e8f0;
+      --white:        #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #eef2f7;
+      color: var(--dark);
+      line-height: 1.6;
+      font-size: 13.5px;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 2.5rem auto;
+      background: var(--white);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+      border-radius: 14px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      grid-template-rows: auto 1fr;
+    }
+
+    /* ── HEADER ───────────────────────────────────────────── */
+    .header {
+      grid-column: 1 / -1;
+      padding: 40px 48px;
+      background: var(--dark);
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .avatar {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+      letter-spacing: -1px;
+    }
+
+    .header-info { flex: 1; }
+
+    .header-name {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+
+    .header-title {
+      font-size: 13px;
+      color: #a5b4fc;
+      margin-top: 5px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .header-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin-top: 18px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .contact-link:hover { color: white; }
+
+    .contact-link svg {
+      width: 14px;
+      height: 14px;
+      fill: #a5b4fc;
+      flex-shrink: 0;
+    }
+
+    /* ── SIDEBAR ──────────────────────────────────────────── */
+    .sidebar {
+      background: var(--sidebar-bg);
+      padding: 32px 24px;
+      border-right: 1px solid var(--border);
+    }
+
+    /* ── MAIN ─────────────────────────────────────────────── */
+    .main {
+      padding: 32px 38px;
+    }
+
+    /* ── SHARED ───────────────────────────────────────────── */
+    .section { margin-bottom: 28px; }
+
+    .section-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      padding-bottom: 7px;
+      border-bottom: 2px solid var(--accent-light);
+    }
+
+    /* ── SKILL GROUPS ─────────────────────────────────────── */
+    .skill-group { margin-bottom: 18px; }
+
+    .skill-group-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--medium);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 7px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .tag {
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 20px;
+      line-height: 1.7;
+    }
+
+    /* ── SUMMARY ──────────────────────────────────────────── */
+    .summary p {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: var(--medium);
+    }
+
+    /* ── EXPERIENCE ───────────────────────────────────────── */
+    .exp-item {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 26px;
+    }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .exp-item::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 16px;
+      width: 1px;
+      bottom: -22px;
+      background: var(--border);
+    }
+
+    .exp-item:last-child::after { display: none; }
+
+    .exp-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 2px;
+    }
+
+    .exp-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .exp-date {
+      font-size: 11.5px;
+      color: var(--light);
+      white-space: nowrap;
+      font-weight: 500;
+      padding-top: 1px;
+    }
+
+    .exp-company {
+      font-size: 12.5px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .exp-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .exp-list li {
+      font-size: 12.5px;
+      color: var(--medium);
+      line-height: 1.65;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .exp-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ── PROJECTS ─────────────────────────────────────────── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .project-card {
+      padding: 14px 15px;
+      background: var(--sidebar-bg);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .project-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .project-desc {
+      font-size: 11.5px;
+      color: var(--medium);
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .project-tag {
+      font-size: 10px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      padding: 2px 7px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* ── PRINT ────────────────────────────────────────────── */
+    @media print {
+      body { background: white; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+      }
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 720px) {
+      .page { grid-template-columns: 1fr; }
+      .header { flex-direction: column; text-align: center; }
+      .header-contacts { justify-content: center; }
+      .project-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="avatar">PJ</div>
+      <div class="header-info">
+        <div class="header-name">Predrag Jovanovic</div>
+        <div class="header-title">Senior Frontend Developer &amp; Full-Stack Engineer</div>
+        <div class="header-contacts">
+          <a href="mailto:j.predrag@gmail.com" class="contact-link">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            j.predrag@gmail.com
+          </a>
+          <a href="tel:+38164186894" class="contact-link">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            +381 64 1868940
+          </a>
+          <a href="https://www.linkedin.com/in/predrag-jovanovic/" target="_blank" class="contact-link">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+            linkedin.com/in/predrag-jovanovic
+          </a>
+          <a href="https://github.com/jovanChe" target="_blank" class="contact-link">
+            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+            github.com/jovanChe
+          </a>
+          <span class="contact-link">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Belgrade, Serbia
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="section">
+        <div class="section-title">Frontend</div>
+        <div class="tags">
+          <span class="tag">React.js</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">Radix UI</span>
+          <span class="tag">React Native</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">State &amp; Data</div>
+        <div class="tags">
+          <span class="tag">Redux</span>
+          <span class="tag">React Query</span>
+          <span class="tag">React Hook Form</span>
+          <span class="tag">Zod</span>
+          <span class="tag">NextAuth</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Backend &amp; Database</div>
+        <div class="tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">Python</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Cloud &amp; DevOps</div>
+        <div class="tags">
+          <span class="tag">AWS CDK</span>
+          <span class="tag">DynamoDB</span>
+          <span class="tag">S3</span>
+          <span class="tag">CloudFormation</span>
+          <span class="tag">Vercel</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Tooling &amp; Workflow</div>
+        <div class="tags">
+          <span class="tag">Git</span>
+          <span class="tag">pnpm</span>
+          <span class="tag">Turbo</span>
+          <span class="tag">Webpack</span>
+          <span class="tag">Module Federation</span>
+          <span class="tag">LaunchDarkly</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">AI &amp; Design</div>
+        <div class="tags">
+          <span class="tag">Claude API</span>
+          <span class="tag">OpenAI API</span>
+          <span class="tag">AI-augmented dev</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Photoshop</span>
+          <span class="tag">Illustrator</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Accessibility</div>
+        <div class="tags">
+          <span class="tag">WCAG AAA</span>
+          <span class="tag">WCAG AA</span>
+          <span class="tag">ARIA</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <div class="section summary">
+        <div class="section-title">About</div>
+        <p>
+          Senior Frontend Developer and Full-Stack Engineer with 20+ years of experience building scalable, accessible web applications.
+          Deep expertise in the React/Next.js ecosystem and TypeScript, with a track record delivering WCAG AA/AAA compliant products for
+          major US financial institutions including HSBC, USAA, and Capital One. Heavy AI tool practitioner — integrating AI-assisted
+          development workflows to accelerate delivery and code quality. Started as a graphic designer, bringing strong visual instinct
+          to every technical decision.
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Experience</div>
+
+        <div class="exp-item">
+          <div class="exp-row">
+            <div class="exp-title">Senior Frontend Developer &amp; Full-Stack Engineer</div>
+            <div class="exp-date">Jul 2014 – Present</div>
+          </div>
+          <div class="exp-company">Vast.com</div>
+          <ul class="exp-list">
+            <li>Architected and led frontend development of HomeStory — a large-scale real estate platform serving HSBC USA customers, built with React, Next.js, Module Federation and AWS (CDK, DynamoDB, S3)</li>
+            <li>Delivered WCAG AAA-compliant standalone app for USAA Bank and WCAG AA integration for Capital One</li>
+            <li>Implemented LaunchDarkly feature flag system and AWS CloudFormation pipelines across multiple client products</li>
+            <li>Built TheScope, a targeted content delivery platform, and Fr8Hub freight management software</li>
+            <li>Frontend for Celsius Network crypto platform and HERO Health as React/Redux developer</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-row">
+            <div class="exp-title">Lead UI Designer &amp; Frontend Developer</div>
+            <div class="exp-date">Apr 2012 – Jul 2014</div>
+          </div>
+          <div class="exp-company">High Tech Engineering Center</div>
+          <ul class="exp-list">
+            <li>Led UI design and frontend development for enterprise applications</li>
+            <li>Established frontend architecture standards and reusable component systems</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-row">
+            <div class="exp-title">Web Designer / Frontend Developer</div>
+            <div class="exp-date">2005 – 2012</div>
+          </div>
+          <div class="exp-company">Eutelnet · Tehnicom Solutions · Wireless Media · Infonetgroup</div>
+          <ul class="exp-list">
+            <li>Built mobile portals and websites for regional telecoms including Qtel (Qatar) and Nawras/Ooredo</li>
+            <li>Progressed from print and graphic design into interactive web, mobile portals and e-commerce</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="section">
+        <div class="section-title">Notable Projects</div>
+        <div class="project-grid">
+
+          <div class="project-card">
+            <div class="project-name">HomeStory — HSBC USA Real Estate Platform</div>
+            <div class="project-desc">Large-scale microfrontend platform (Module Federation) for one of the largest US banks. Led frontend architecture, AWS infrastructure and full delivery lifecycle.</div>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">Next.js</span>
+              <span class="project-tag">AWS</span>
+              <span class="project-tag">WCAG AA</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-name">USAA Bank — Real Estate App</div>
+            <div class="project-desc">Standalone app meeting the highest level of web accessibility (WCAG AAA) for one of the largest US financial institutions.</div>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">WCAG AAA</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-name">Athletics — Sports Performance Platform</div>
+            <div class="project-desc">Personal full-stack sports tracking app. Monorepo architecture with Next.js 16, React 19, Radix UI, MongoDB and NextAuth.</div>
+            <div class="project-tags">
+              <span class="project-tag">Next.js 16</span>
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">Turbo</span>
+              <span class="project-tag">MongoDB</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-name">Second Brain — AI Agent System</div>
+            <div class="project-desc">Personal autonomous AI agent with persistent memory, vector search and multi-tool orchestration built on the Anthropic Claude API.</div>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Claude API</span>
+              <span class="project-tag">ChromaDB</span>
+              <span class="project-tag">PostgreSQL</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+</body>
+</html>
