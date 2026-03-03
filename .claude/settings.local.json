@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\":*)",
-      "mcp__playwright__browser_take_screenshot",
-      "mcp__playwright__browser_run_code"
-    ]
-  }
-}

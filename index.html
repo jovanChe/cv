@@ -108,6 +108,35 @@
           color: white;
       }
 
+      .download-btn {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          padding: 8px 16px;
+          background: var(--accent);
+          color: white;
+          text-decoration: none;
+          border-radius: 8px;
+          font-size: 12.5px;
+          font-weight: 600;
+          letter-spacing: 0.3px;
+          transition: background 0.15s;
+          white-space: nowrap;
+          align-self: flex-start;
+          flex-shrink: 0;
+      }
+
+      .download-btn:hover {
+          background: var(--accent-dark);
+      }
+
+      .download-btn svg {
+          width: 15px;
+          height: 15px;
+          fill: white;
+          flex-shrink: 0;
+      }
+
       .contact-link svg {
           width: 14px;
           height: 14px;
@@ -306,6 +335,11 @@
           font-weight: 500;
       }
 
+      /* ── PAGE BREAK ───────────────────────────────────────── */
+      .break-before {
+          break-before: page;
+      }
+
       /* ── PRINT ────────────────────────────────────────────── */
       @media print {
           @page {
@@ -371,6 +405,10 @@
 
           .contact-link {
               color: #cbd5e1;
+          }
+
+          .download-btn {
+              display: none;
           }
       }
 
@@ -440,6 +478,10 @@
           </span>
       </div>
     </div>
+    <a href="predrag-jovanovic-cv.pdf" download class="download-btn">
+      <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      Download CV
+    </a>
   </header>
 
   <!-- SIDEBAR -->
@@ -621,7 +663,7 @@
 
     </div>
 
-    <div class="section">
+    <div class="section break-before">
       <div class="section-title">Notable Projects</div>
       <div class="project-grid">
 
