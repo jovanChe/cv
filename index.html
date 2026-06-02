@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Predrag Jovanovic – Senior Software Engineer</title>
+  <title>Predrag Jovanovic – Senior Frontend Engineer</title>
   <style>
       *, *::before, *::after {
           box-sizing: border-box;
@@ -21,6 +21,8 @@
           --sidebar-bg: #f8fafc;
           --border: #e2e8f0;
           --white: #ffffff;
+          --tag-working-bg: #f1f5f9;
+          --tag-working-color: #475569;
       }
 
       body {
@@ -168,18 +170,30 @@
           border-bottom: 2px solid var(--accent-light);
       }
 
+      .skill-tier {
+          font-size: 0.75rem;
+          font-weight: 700;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          color: var(--light);
+          margin-top: 18px;
+          margin-bottom: 10px;
+      }
+
+      .skill-tier:first-child {
+          margin-top: 0;
+      }
+
       /* ── SKILL GROUPS ─────────────────────────────────────── */
       .skill-group {
-          margin-bottom: 18px;
+          margin-bottom: 14px;
       }
 
       .skill-group-label {
-          font-size: 1rem;
+          font-size: 0.875rem;
           font-weight: 600;
           color: var(--medium);
-          text-transform: uppercase;
-          letter-spacing: 0.8px;
-          margin-bottom: 7px;
+          margin-bottom: 6px;
       }
 
       .tags {
@@ -198,12 +212,22 @@
           line-height: 1.7;
       }
 
+      .tag.working {
+          background: var(--tag-working-bg);
+          color: var(--tag-working-color);
+      }
+
       /* ── SUMMARY ──────────────────────────────────────────── */
       .summary p {
           font-size: 1.0625rem;
           line-height: 1.75;
-          padding: 10px 0;
+          padding: 6px 0;
           color: var(--medium);
+      }
+
+      .summary p strong {
+          color: var(--dark);
+          font-weight: 600;
       }
 
       /* ── EXPERIENCE ───────────────────────────────────────── */
@@ -265,6 +289,14 @@
           color: var(--accent);
           font-weight: 500;
           margin-bottom: 8px;
+      }
+
+      .exp-context {
+          font-size: 0.95rem;
+          color: var(--medium);
+          line-height: 1.6;
+          margin-bottom: 10px;
+          font-style: italic;
       }
 
       .exp-list {
@@ -437,7 +469,7 @@
     <img src="pedja.jpg" alt="Predrag Jovanovic" class="avatar" />
     <div class="header-info">
       <div class="header-name">Predrag Jovanovic</div>
-      <div class="header-title">Senior Software Engineer</div>
+      <div class="header-title">Senior Frontend Engineer</div>
       <div class="header-contacts">
         <a href="mailto:j.predrag@gmail.com" class="contact-link">
           <svg viewBox="0 0 24 24">
@@ -483,23 +515,32 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
-    <div class="section">
-      <div class="section-title">Frontend</div>
+    <div class="skill-tier">Core stack</div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">Frontend</div>
       <div class="tags">
-        <span class="tag">React.js</span>
+        <span class="tag">React</span>
         <span class="tag">Next.js</span>
         <span class="tag">TypeScript</span>
         <span class="tag">JavaScript</span>
         <span class="tag">HTML5</span>
         <span class="tag">CSS3</span>
-        <span class="tag">Tailwind CSS</span>
+        <span class="tag">Tailwind</span>
         <span class="tag">Radix UI</span>
-        <span class="tag">React Native</span>
       </div>
     </div>
 
-    <div class="section">
-      <div class="section-title">State &amp; Data</div>
+    <div class="skill-group">
+      <div class="skill-group-label">Mobile</div>
+      <div class="tags">
+        <span class="tag">React Native</span>
+        <span class="tag">Expo</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">State &amp; data on the client</div>
       <div class="tags">
         <span class="tag">Redux</span>
         <span class="tag">React Query</span>
@@ -508,59 +549,62 @@
       </div>
     </div>
 
-    <div class="section">
-      <div class="section-title">Backend &amp; Database</div>
+    <div class="skill-group">
+      <div class="skill-group-label">Architecture</div>
       <div class="tags">
-        <span class="tag">Node.js</span>
-        <span class="tag">Python</span>
-        <span class="tag">MongoDB</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">REST APIs</span>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Cloud &amp; DevOps</div>
-      <div class="tags">
-        <span class="tag">AWS CDK</span>
-        <span class="tag">DynamoDB</span>
-        <span class="tag">S3</span>
-        <span class="tag">CloudFormation</span>
-        <span class="tag">Vercel</span>
-        <span class="tag">Docker</span>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Tooling &amp; Workflow</div>
-      <div class="tags">
-        <span class="tag">Git</span>
-        <span class="tag">pnpm</span>
+        <span class="tag">Monorepo</span>
+        <span class="tag">Multi-tenant</span>
         <span class="tag">Turbo</span>
+        <span class="tag">pnpm</span>
         <span class="tag">Webpack</span>
-        <span class="tag">Module Federation</span>
-        <span class="tag">LaunchDarkly</span>
       </div>
     </div>
 
-    <div class="section">
-      <div class="section-title">AI &amp; Design</div>
+    <div class="skill-group">
+      <div class="skill-group-label">Accessibility</div>
+      <div class="tags">
+        <span class="tag">WCAG AAA</span>
+        <span class="tag">WCAG AA</span>
+        <span class="tag">ARIA</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">AI &amp; design</div>
       <div class="tags">
         <span class="tag">Claude API</span>
         <span class="tag">OpenAI API</span>
-        <span class="tag">AI-augmented dev</span>
+        <span class="tag">AI-assisted dev</span>
         <span class="tag">Figma</span>
         <span class="tag">Photoshop</span>
         <span class="tag">Illustrator</span>
       </div>
     </div>
 
-    <div class="section">
-      <div class="section-title">Accessibility</div>
+    <div class="skill-tier">Working knowledge</div>
+
+    <div class="skill-group">
       <div class="tags">
-        <span class="tag">WCAG AAA</span>
-        <span class="tag">WCAG AA</span>
-        <span class="tag">ARIA</span>
+        <span class="tag working">Node.js</span>
+        <span class="tag working">REST APIs</span>
+        <span class="tag working">MongoDB</span>
+        <span class="tag working">PostgreSQL</span>
+        <span class="tag working">Docker</span>
+        <span class="tag working">Vercel</span>
+        <span class="tag working">LaunchDarkly</span>
+      </div>
+    </div>
+
+    <div class="skill-tier">Familiar</div>
+
+    <div class="skill-group">
+      <div class="tags">
+        <span class="tag working">Microfrontends</span>
+        <span class="tag working">Module Federation</span>
+        <span class="tag working">AWS CDK</span>
+        <span class="tag working">DynamoDB</span>
+        <span class="tag working">S3</span>
+        <span class="tag working">CloudFormation</span>
       </div>
     </div>
 
@@ -572,23 +616,18 @@
     <div class="section summary">
       <div class="section-title">About</div>
       <p>
-        Senior Software Engineer with 20+ years of experience building scalable, accessible, and high-impact web
-        applications. I specialize in the React/Next.js ecosystem and TypeScript, with a strong track record of
-        delivering WCAG AA/AAA compliant products for 15+ U.S. financial institutions, including Pennymac, SoFi,
-        Citizens Bank, Fifth Third Bank, Capital One, and others.
+        Senior frontend engineer with 20 years in the field, the last 11 of them on a single product —
+        <strong>HomeStory</strong>, a white-label home-search and agent-matching platform now live for 15+ U.S.
+        financial institutions including Pennymac, SoFi, Citizens Bank, Fifth Third, Capital One, Fidelity and
+        LendingTree. I've personally shipped every partner edition's frontend, all at WCAG AA or AAA.
       </p>
       <p>
-        I’m a heavy AI practitioner, actively integrating AI-assisted development workflows to accelerate delivery,
-        improve code quality, and enhance team productivity.
-      </p>
-      <p>
-        Originally starting my career as a graphic designer, I bring a strong visual instinct and product sensibility to
-        every technical decision — balancing engineering excellence with usability and design clarity.
-      </p>
-      <p>
-        Beyond the code, I’m highly communicative and collaborative, with extensive experience working within and across
-        cross-functional teams. I value clear communication, shared ownership, and building engineering cultures where
-        knowledge flows freely and teams ship with confidence.
+        I work in React, Next.js and TypeScript at scale, on multi-tenant platforms where each
+        partner is its own tenant on shared underlying code. I came into engineering from graphic design, which
+        shapes how I work — I care about visual correctness and interaction detail, not just whether something
+        compiles. Comfortable enough on the backend (Node, REST, SQL/Mongo) to ship full features end to end without blocking -
+        something I currently practice on my own SaaS boilerplate, <strong>Athletix</strong>, alongside its mobile companion in React Native
+        and Expo.
       </p>
     </div>
 
@@ -597,24 +636,33 @@
 
       <div class="exp-item">
         <div class="exp-row">
-          <div class="exp-title">Senior Software Engineer</div>
+          <div class="exp-title">Senior Frontend Engineer</div>
           <div class="exp-date">Jul 2014 – Present</div>
         </div>
-        <div class="exp-company">Vast.com · HomeStory <span style="font-size:1rem;color:var(--light);font-weight:400;">(rebranded 2020)</span>
+        <div class="exp-company">HomeStory <span style="font-size:1rem;color:var(--light);font-weight:400;">(formerly Vast.com — rebranded 2020)</span>
+        </div>
+        <div class="exp-context">
+          HomeStory is a white-label home-search and agent-matching platform embedded by U.S. banks and lenders on
+          their own sites. End users come from a partner like Pennymac or SoFi, search tens of thousands of properties,
+          and get matched with a real estate agent — generating mortgage leads and referral revenue for the bank.
         </div>
         <ul class="exp-list">
-          <li>Part of the core team that built the HomeStory platform from the ground up — a large-scale multi-tenant
-            real estate platform now serving 15+ financial institution partners (Pennymac, SoFi, Citizens Bank, Fifth
-            Third Bank, Fidelity, LendingTree, RBC, and more), built with React, Next.js, Module Federation and AWS
+          <li>Joined the core team that built HomeStory from the ground up; the platform now serves 15+ partner
+            editions live in production (Pennymac, SoFi, Citizens Bank, Fifth Third, Capital One, Fidelity, LendingTree,
+            RBC, and others)
           </li>
-          <li>Built the HomeStory Admin from inception — internal tooling for partner onboarding, site
-            configuration, content management and feature orchestration
+          <li>Owned the <strong>frontend architecture</strong> — React/Next.js on a multi-tenant system
+            (originally built on Module Federation) where each partner is a tenant on shared code, with per-partner
+            branding, configuration and feature flags
           </li>
-          <li>Delivered WCAG AAA/AA compliant partner integrations across all HomeStory platform editions for major US
-            financial institutions and fintech leaders
+          <li>Built <strong>HomeStory Admin</strong> from inception — internal tooling the business uses to onboard
+            new partners, configure each partner's site, manage content, and orchestrate features via LaunchDarkly
           </li>
-          <li>Worked on LaunchDarkly feature flag system and AWS CloudFormation pipelines across multiple client
-            products
+          <li>Owned <strong>accessibility</strong> across the platform — every partner edition ships at WCAG AA or
+            AAA, which matters because these are regulated financial institutions
+          </li>
+          <li>Owned <strong>partner onboarding</strong> on the frontend — every new bank's edition has been set up
+            and shipped through me
           </li>
         </ul>
       </div>
@@ -638,7 +686,7 @@
         </div>
         <div class="exp-company">Eutelnet · Tehnicom Solutions · Wireless Media · Infonetgroup</div>
         <ul class="exp-list">
-          <li>Built mobile portals and websites for regional telecoms including Qtel (Qatar) and Nawras/Ooredo</li>
+          <li>Built mobile portals and websites for regional telecoms including Qtel (Qatar) and Nawras/Ooredoo</li>
           <li>Progressed from print and graphic design into interactive web, mobile portals and e-commerce</li>
         </ul>
       </div>
@@ -664,28 +712,34 @@
       <div class="project-grid">
 
         <div class="project-card">
-          <div class="project-name">HomeStory — Multi-Tenant Real Estate Platform</div>
-          <div class="project-desc">Involved from inception as part of the core team — large-scale microfrontend
-            platform (Module Federation) serving 15+ financial institution partners including Pennymac, SoFi, Citizens
-            Bank, Fifth Third, and more.
+          <div class="project-name">HomeStory — multi-tenant real estate platform</div>
+          <div class="project-desc">White-label home-search and agent-matching used by 15+ U.S. banks (Pennymac, SoFi,
+            Citizens, Fifth Third, Capital One). Multi-tenant architecture; tens of thousands of
+            properties. I own the frontend architecture, accessibility, and
+            partner-onboarding work.
           </div>
           <div class="project-tags">
             <span class="project-tag">React</span>
             <span class="project-tag">Next.js</span>
-            <span class="project-tag">AWS</span>
-            <span class="project-tag">WCAG AA</span>
+            <span class="project-tag">Multi-tenant</span>
+            <span class="project-tag">WCAG AAA</span>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-name">HomeStory Admin</div>
-          <div class="project-desc">Built from the ground up — internal tooling for partner onboarding, per-partner site
-            configuration, content management and feature flag orchestration across all platform editions.
+          <div class="project-name">Athletix — SaaS platform with mobile companion</div>
+          <div class="project-desc">My own production-grade Next.js SaaS boilerplate. Turbo monorepo with JWT auth,
+            role-based access control, a 60+ component UI library on Radix primitives, CSS Modules with design tokens,
+            and a marketing app alongside the main product. Currently building the mobile companion in React Native
+            and Expo, designed in Figma. This is where I work full-stack end to end.
           </div>
           <div class="project-tags">
-            <span class="project-tag">React</span>
             <span class="project-tag">Next.js</span>
-            <span class="project-tag">Node.js</span>
+            <span class="project-tag">TypeScript</span>
+            <span class="project-tag">Turbo monorepo</span>
+            <span class="project-tag">React Native</span>
+            <span class="project-tag">Expo</span>
+            <span class="project-tag">MongoDB</span>
           </div>
         </div>
 
